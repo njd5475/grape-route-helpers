@@ -57,7 +57,7 @@ module Spec
 
     # API with multiple posts in the same resource
     class APIWithMultiplePosts < Grape::API
-      resource :hamlit do
+      resource :hamlet do
         post :tobe do
           "to be"
         end

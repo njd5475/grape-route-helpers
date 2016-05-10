@@ -12,7 +12,7 @@ describe GrapeRouteHelpers::AllRoutes do
 
         # A route is unique if no other route shares the same set of options
         all_route_options = Grape::API.all_routes.map do |r|
-          r.instance_variable_get(:@options)
+          r.instance_variable_get(:@options).merge(path: r.path)
         end
 
         duplicates = all_route_options.select do |o|
@@ -20,7 +20,7 @@ describe GrapeRouteHelpers::AllRoutes do
         end
 
         expect(duplicates).to be_empty
-        expect(all_route_options.size).to eq(7)
+        expect(all_route_options.size).to eq(9)
       end
     end
   end

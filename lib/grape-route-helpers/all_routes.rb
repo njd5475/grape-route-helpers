@@ -10,7 +10,13 @@ module GrapeRouteHelpers
 
     def all_routes
       routes = subclasses.flat_map { |s| s.send(:prepare_routes) }
-      routes.uniq(&:options)
+      routes.uniq do |r|
+        if r.path.nil?
+          [r.options]
+        else
+          [r.options, r.path]
+        end
+      end
     end
   end
 end
