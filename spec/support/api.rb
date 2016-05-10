@@ -54,5 +54,18 @@ module Spec
         'pong'
       end
     end
+
+    # API with multiple posts in the same resource
+    class APIWithMultiplePosts < Grape::API
+      resource :hamlit do
+        post :tobe do
+          "to be"
+        end
+
+        post :ornot do
+          "or not"
+        end
+      end
+    end
   end
 end
